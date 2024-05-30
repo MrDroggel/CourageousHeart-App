@@ -30,7 +30,9 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Tab One",
+          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          // eslint-disable-next-line react/no-unstable-nested-components
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -55,6 +57,7 @@ export default function TabLayout() {
         name="two"
         options={{
           title: "Tab Two",
+          // eslint-disable-next-line react/no-unstable-nested-components
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
