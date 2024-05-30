@@ -1,0 +1,7 @@
+android/
+build/
+coverage/
+jest/
+ios/
+node_modules/
+web/

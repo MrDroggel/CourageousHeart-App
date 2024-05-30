@@ -1,0 +1,32 @@
+name: Expo React Native CI
+
+on:
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [16.x, 18.x, 20.x]
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Type check
+              run: npm run type:check
+
+            - name: Lint
+              run: npm run lint
+
+            - name: Run tests
+              run: npm test
