@@ -10,5 +10,5 @@
 - ~~CI-pipeline (GitHub)~~
 - ~~ESLint -> AirBnB~~
 
-- CD-pipeline (eas)
+- ~~CD-pipeline (eas)~~
 - Test-Framework -> Jest (evtl. React Testing Library)

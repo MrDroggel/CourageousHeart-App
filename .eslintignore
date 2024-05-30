@@ -5,5 +5,3 @@ jest/
 ios/
 node_modules/
 web/
-__tests__/
-**/*.test.*
