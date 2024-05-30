@@ -9,6 +9,6 @@
 - ~~Pre-commit hook -> Husky~~
 - ~~CI-pipeline (GitHub)~~
 - ~~ESLint -> AirBnB~~
-
-- CD-pipeline (eas)
 - ~~Test-Framework -> Jest (evtl. React Testing Library)~~
+- CD-pipeline (eas)
+
