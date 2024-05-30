@@ -1,11 +1,25 @@
 {
   "compilerOptions": {
     "strict": true,
+    "types": ["node", "react", "react-native", "jest"],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
-  "exclude": [".expo/", "expo-env.d.ts"],
+  "exclude": [
+    ".expo/",
+    "node_modules"
+  ],
   "extends": "expo/tsconfig.base",
-  "include": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx", ".eslintrc.js"]
+  "include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    ".eslintrc.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ],
 }
