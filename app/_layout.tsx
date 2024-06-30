@@ -7,18 +7,29 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-
 import * as SplashScreen from "expo-splash-screen";
+import i18next from "i18next";
 import React, { useEffect } from "react";
 import "react-native-reanimated";
+import * as Localization from "expo-localization";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import SpaceMono from "../assets/fonts/SpaceMono-Regular.ttf";
+
+const styles = StyleSheet.create({
+  safeContainer: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+});
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const unstable_settings = {
+export const unstableSettings = {
   // Ensure that reloading on `/modal` keeps a back button present.
   initialRouteName: "(tabs)",
 };
@@ -31,18 +42,20 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-      </Stack>
+      <SafeAreaView style={styles.safeContainer}>
+        <StatusBar hidden />
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" options={{ animation: "none" }} />
+          <Stack.Screen name="(registration)" />
+        </Stack>
+      </SafeAreaView>
     </ThemeProvider>
   );
 }
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    /* eslint-disable global-require */
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    SpaceMono,
     ...FontAwesome.font,
   });
 
@@ -60,6 +73,8 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+  i18next.changeLanguage(Localization.getLocales()[0].languageCode!);
 
   return <RootLayoutNav />;
 }

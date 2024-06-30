@@ -3,6 +3,7 @@
     "strict": true,
     "types": ["node", "react", "react-native", "jest"],
     "paths": {
+      "@firebase/auth": ["./node_modules/@firebase/auth/dist/index.rn.d.ts"],
       "@/*": [
         "./*"
       ]
@@ -20,6 +21,7 @@
     "**/*.tsx",
     ".eslintrc.js",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "declarations.d.ts"
   ],
 }
