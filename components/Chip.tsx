@@ -13,15 +13,15 @@ interface ChipProps {
 const styles = ScaledSheet.create({
   container: {
     justifyContent: "center",
-    margin: "6@s",
-    paddingHorizontal: "20@s",
-    borderWidth: "1.5@s",
-    borderRadius: "40@s",
+    margin: "6@ms",
+    paddingHorizontal: "20@ms",
+    borderWidth: "1.5@ms",
+    borderRadius: "40@ms",
     borderColor: "black",
-    height: "40@s",
+    height: "40@ms",
   },
   text: {
-    fontSize: "14@s",
+    fontSize: "14@ms",
     fontWeight: "500",
   },
 });

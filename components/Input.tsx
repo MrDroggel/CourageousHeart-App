@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { View, TextInput, TouchableOpacity, Image, Text } from "react-native";
 
-import { ScaledSheet, scale } from "react-native-size-matters";
+import { ScaledSheet, moderateScale } from "react-native-size-matters";
 
 const eyeCrossedIcon = require("../assets/icons/eye_crossed.png");
 const eyeIcon = require("../assets/icons/eye.png");
 
 const style = ScaledSheet.create({
-  inputContainer: {
-    height: "48@s",
+  container_input: {
+    height: "48@ms",
+    maxHeight: 80,
     backgroundColor: "white",
     flexDirection: "row",
-    paddingLeft: "20@s",
-    borderRadius: "50@s",
+    paddingLeft: "20@ms",
+    borderRadius: "50@ms",
     borderColor: "black",
-    borderWidth: "1.5@s",
     width: "100%",
+    alignSelf: "center",
   },
   inputField: {
-    height: "48@s",
     width: "100%",
+    fontSize: "14@ms",
   },
 });
 
@@ -50,21 +51,22 @@ export default function Input({
   return (
     <View
       style={{
-        paddingHorizontal: scale(20),
-        marginBottom: scale(12),
+        marginBottom: moderateScale(12),
         width: "100%",
         alignItems: "flex-start",
+        maxWidth: 600,
       }}
     >
       <View
         style={[
-          style.inputContainer,
+          style.container_input,
           {
-            paddingRight: password ? scale(48) : scale(10),
+            paddingRight: password ? moderateScale(50) : moderateScale(20),
             backgroundColor: isFocused ? "#ECDEEA" : "white",
             alignItems: "center",
-            borderColor: error.length !== 0 ? "red" : "black",
-            borderWidth: error.length !== 0 ? scale(2) : scale(1),
+            borderColor: error.length !== 0 ? "#B00020" : "black",
+            borderWidth:
+              error.length !== 0 ? moderateScale(2) : moderateScale(1.5),
           },
         ]}
       >
@@ -85,9 +87,9 @@ export default function Input({
         {password && (
           <TouchableOpacity
             style={{
-              width: scale(44),
-              height: scale(44),
-              paddingLeft: scale(10),
+              width: moderateScale(44),
+              height: moderateScale(44),
+              paddingLeft: moderateScale(10),
               justifyContent: "center",
             }}
             activeOpacity={1}
@@ -98,8 +100,8 @@ export default function Input({
                 source={eyeCrossedIcon}
                 resizeMode="contain"
                 style={{
-                  height: scale(20),
-                  width: scale(20),
+                  height: moderateScale(20),
+                  width: moderateScale(20),
                   tintColor: "#374957",
                 }}
               />
@@ -108,8 +110,8 @@ export default function Input({
                 source={eyeIcon}
                 resizeMode="contain"
                 style={{
-                  height: scale(20),
-                  width: scale(20),
+                  height: moderateScale(20),
+                  width: moderateScale(20),
                   tintColor: "#374957",
                 }}
               />
@@ -117,7 +119,13 @@ export default function Input({
           </TouchableOpacity>
         )}
       </View>
-      <Text style={{ marginTop: scale(4), color: "red", fontSize: scale(11) }}>
+      <Text
+        style={{
+          marginTop: moderateScale(4),
+          color: "#B00020",
+          fontSize: moderateScale(11),
+        }}
+      >
         {error}
       </Text>
     </View>

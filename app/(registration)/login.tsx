@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 import i18next from "i18next";
-import { ScaledSheet, scale } from "react-native-size-matters";
+import { ScaledSheet, moderateScale } from "react-native-size-matters";
 import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -31,24 +31,25 @@ const styles = ScaledSheet.create({
     flex: 1,
     backgroundColor: "white",
     height: "100%",
-    marginBottom: "35@s",
+    marginBottom: "35@ms",
     width: Dimensions.get("window").width,
     justifyContent: "center",
     alignItems: "center",
   },
   container_overlay: {
     backgroundColor: "white",
-    paddingTop: "30@s",
-    paddingBottom: "20@s",
-    borderTopStartRadius: "40@s",
-    borderTopEndRadius: "40@s",
+    paddingTop: "20@ms",
+    paddingHorizontal: "20@ms",
+    paddingBottom: "20@ms",
+    borderTopStartRadius: "40@ms",
+    borderTopEndRadius: "40@ms",
     justifyContent: "center",
   },
   container_image: {
     justifyContent: "center",
     flex: 1,
     width: "100%",
-    height: scale(180),
+    height: "180@ms",
   },
   container_title: {
     flex: 0.4,
@@ -60,50 +61,52 @@ const styles = ScaledSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    marginBottom: "15@s",
+    marginBottom: "25@ms",
   },
   container_button: {
-    paddingHorizontal: "20@s",
+    paddingHorizontal: "20@ms",
     width: "100%",
-    flexGrow: 0.2,
-    height: "15@s",
     justifyContent: "flex-end",
   },
   image: {
-    width: "140@s",
-    height: "140@s",
+    width: "140@ms",
+    height: "140@ms",
     alignSelf: "center",
-    marginBottom: "25@s",
+    marginBottom: "25@ms",
   },
   title: {
     color: "black",
-    fontSize: "40@s",
+    fontSize: "40@ms",
     fontWeight: "bold",
     alignSelf: "center",
   },
   button_back: {
-    width: "30@s",
-    height: "30@s",
-    marginTop: "30@s",
-    marginLeft: "15@s",
+    width: "30@ms",
+    height: "30@ms",
+    marginTop: "30@ms",
+    marginLeft: "15@ms",
     alignSelf: "flex-start",
+    justifyContent: "center",
   },
   button_login: {
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "50@s",
-    height: "48@s",
+    borderRadius: "50@ms",
+    height: "48@ms",
+    maxHeight: 80,
     width: "100%",
-    marginTop: "10@s",
+    maxWidth: 600,
+    marginTop: "10@ms",
     backgroundColor: "black",
   },
   button_close: {
     alignSelf: "flex-end",
-    height: "30@s",
-    width: "30@s",
-    marginEnd: "30@s",
-    marginBottom: "10@s",
+    height: "30@ms",
+    width: "30@ms",
+    marginBottom: "10@ms",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
@@ -233,16 +236,15 @@ export default function LoginScreen() {
           >
             <Image
               source={close}
-              style={{ height: scale(30), width: scale(30) }}
+              style={{ height: moderateScale(25), width: moderateScale(25) }}
               resizeMode="contain"
             />
           </TouchableOpacity>
           <View>
             <Text
               style={{
-                fontSize: scale(25),
+                fontSize: moderateScale(25),
                 fontWeight: "bold",
-                paddingHorizontal: scale(20),
               }}
             >
               {i18next.t("check_inbox")}
@@ -257,7 +259,7 @@ export default function LoginScreen() {
       >
         <Image
           source={angleLeftIcon}
-          style={{ height: scale(20), width: scale(20) }}
+          style={{ height: moderateScale(25), width: moderateScale(25) }}
           resizeMode="contain"
         />
       </TouchableOpacity>
@@ -280,52 +282,76 @@ export default function LoginScreen() {
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           style={styles.container_form}
         >
-          <Input
-            email
-            error={mailError}
-            placeholder={i18next.t("email")}
-            onChange={onChangeEmail}
-            setError={setMailError}
-            value={email}
-            password={false}
-          />
-          <Input
-            email={false}
-            error={pwError}
-            placeholder={i18next.t("password")}
-            onChange={onChangePw}
-            setError={setPwError}
-            value={pw}
-            password
-          />
-          <View>
-            <Text
-              style={{ fontWeight: "bold", marginBottom: scale(30) }}
-              onPress={() => {
-                forgotPassword();
-              }}
-            >
-              {i18next.t("password_forgot")}
-            </Text>
-          </View>
           <View
             style={{
-              justifyContent: "space-evenly",
+              flex: 0.75,
+              justifyContent: "center",
               alignItems: "center",
-              flexDirection: "row",
-              alignSelf: "center",
+              width: "100%",
+              paddingHorizontal: moderateScale(20),
             }}
           >
-            <Text>{i18next.t("no_account")}</Text>
-            <Link
-              href="/profilData"
+            <Input
+              email
+              error={mailError}
+              placeholder={i18next.t("email")}
+              onChange={onChangeEmail}
+              setError={setMailError}
+              value={email}
+              password={false}
+            />
+            <Input
+              email={false}
+              error={pwError}
+              placeholder={i18next.t("password")}
+              onChange={onChangePw}
+              setError={setPwError}
+              value={pw}
+              password
+            />
+          </View>
+
+          <View
+            style={{
+              justifyContent: "space-between",
+              alignItems: "center",
+              flex: 0.2,
+            }}
+          >
+            <View style={{}}>
+              <Text
+                style={{
+                  fontSize: moderateScale(12),
+                  fontWeight: "bold",
+                }}
+                onPress={() => {
+                  forgotPassword();
+                }}
+              >
+                {i18next.t("password_forgot")}
+              </Text>
+            </View>
+            <View
               style={{
-                fontWeight: "bold",
-                marginLeft: scale(10),
+                justifyContent: "space-evenly",
+                flexDirection: "row",
+                alignSelf: "center",
               }}
             >
-              <Text>{i18next.t("sign_up")}</Text>
-            </Link>
+              <Text style={{ fontSize: moderateScale(12) }}>
+                {i18next.t("no_account")}
+              </Text>
+              <Link
+                href="/profilData"
+                style={{
+                  fontSize: moderateScale(12),
+                  fontWeight: "bold",
+                  marginLeft: moderateScale(10),
+                }}
+              >
+                <Text>{i18next.t("sign_up")}</Text>
+              </Link>
+            </View>
           </View>
         </KeyboardAvoidingView>
 
@@ -342,7 +368,7 @@ export default function LoginScreen() {
             ) : (
               <Text
                 style={{
-                  fontSize: scale(15),
+                  fontSize: moderateScale(15),
                   color: "white",
                   fontWeight: "bold",
                 }}

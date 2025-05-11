@@ -5,7 +5,7 @@ import i18next from "i18next";
 import * as Localization from "expo-localization";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
-import { ScaledSheet, scale } from "react-native-size-matters";
+import { ScaledSheet, moderateScale } from "react-native-size-matters";
 import * as ImagePicker from "expo-image-picker";
 import { Link, router } from "expo-router";
 import ReactNativeModal from "react-native-modal";
@@ -23,57 +23,57 @@ const styles = ScaledSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
     backgroundColor: "white",
-    paddingBottom: "35@s",
+    paddingBottom: "35@ms",
   },
   container_title: {
     flex: 0.4,
     justifyContent: "flex-start",
-    paddingTop: "10@s",
+    paddingTop: "10@ms",
   },
   container_picture: {
     flex: 0.55,
     width: "100%",
     justifyContent: "flex-end",
     alignItems: "center",
-    paddingBottom: "20@s",
+    paddingBottom: "20@ms",
   },
   container_image: {
-    height: "130@s",
+    height: "130@ms",
   },
   container_form: {
     flex: 0.95,
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+    paddingHorizontal: "20@ms",
   },
-  container_input: {
+  container_picker: {
+    justifyContent: "center",
     width: "100%",
-    paddingHorizontal: "20@s",
-    marginBottom: "12@s",
-    alignItems: "flex-start",
-    flexDirection: "column",
+    maxWidth: 600,
+    alignSelf: "center",
   },
   container_button: {
     flex: 0.3,
     justifyContent: "flex-end",
     alignItems: "flex-end",
     width: "100%",
-    paddingHorizontal: "20@s",
+    paddingHorizontal: "20@ms",
   },
   container_next: {
-    width: "115@s",
-    height: "48@s",
+    width: "115@ms",
+    height: "48@ms",
   },
   title: {
     color: "black",
-    fontSize: "40@s",
+    fontSize: "40@ms",
     fontWeight: "bold",
   },
   default_profilPicture: {
-    height: "125@s",
-    width: "125@s",
-    borderRadius: "80@s",
-    borderWidth: "1.5@s",
+    height: "125@ms",
+    width: "125@ms",
+    borderRadius: "80@ms",
+    borderWidth: "1.5@ms",
     borderColor: "black",
     alignSelf: "center",
     justifyContent: "center",
@@ -81,10 +81,10 @@ const styles = ScaledSheet.create({
     tintColor: "#ECDEEA",
   },
   profilPicture: {
-    height: "125@s",
-    width: "125@s",
-    borderRadius: "80@s",
-    borderWidth: 2,
+    height: "125@ms",
+    width: "125@ms",
+    borderRadius: "80@ms",
+    borderWidth: "1.5@ms",
     borderColor: "black",
     alignSelf: "center",
     justifyContent: "center",
@@ -93,10 +93,14 @@ const styles = ScaledSheet.create({
   },
   datePicker: {
     justifyContent: "center",
-    paddingLeft: "20@s",
-    borderRadius: "40@s",
-    height: "48@s",
+    paddingLeft: "20@ms",
+    borderRadius: "40@ms",
+    height: "48@ms",
+    maxHeight: 80,
     width: "100%",
+    maxWidth: 600,
+    alignSelf: "center",
+    fontSize: "14@ms",
   },
   overlay: {
     flex: 1,
@@ -105,60 +109,61 @@ const styles = ScaledSheet.create({
   },
   overlayContent: {
     backgroundColor: "lightgrey",
-    padding: "20@s",
-    borderTopStartRadius: "40@s",
-    borderTopEndRadius: "40@s",
+    padding: "20@ms",
+    borderTopStartRadius: "40@ms",
+    borderTopEndRadius: "40@ms",
     justifyContent: "center",
   },
   button_back: {
-    width: "30@s",
-    height: "30@s",
-    marginTop: "30@s",
-    marginLeft: "15@s",
+    width: "30@ms",
+    height: "30@ms",
+    marginTop: "30@ms",
+    marginLeft: "15@ms",
     alignSelf: "flex-start",
+    justifyContent: "center",
   },
   button_pen: {
-    width: "33@s",
-    height: "33@s",
+    width: "33@ms",
+    height: "33@ms",
     alignSelf: "flex-end",
-    top: "-33@s",
+    top: "-33@ms",
     backgroundColor: "white",
-    borderRadius: "50@s",
+    borderRadius: "50@ms",
     justifyContent: "center",
     alignItems: "center",
     zIndex: 2,
   },
   button_trash: {
-    width: "33@s",
-    height: "33@s",
+    width: "33@ms",
+    height: "33@ms",
     alignSelf: "flex-end",
-    top: "33@s",
-    borderRadius: "50@s",
+    top: "33@ms",
+    borderRadius: "50@ms",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "black",
     borderColor: "white",
-    borderWidth: "3@s",
+    borderWidth: "3@ms",
     zIndex: 3,
   },
   button_ok: {
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 50,
+    borderRadius: "50@ms",
     borderColor: "black",
-    borderWidth: "1@s",
-    height: "48@s",
-    width: "120@s",
-    marginTop: "10@s",
+    borderWidth: "1@ms",
+    height: "48@ms",
+    width: "120@ms",
+    marginTop: "10@ms",
   },
   button_next: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "50@s",
-    width: "130@s",
+    borderRadius: "50@ms",
+    width: "130@ms",
     alignSelf: "flex-end",
     backgroundColor: "black",
   },
@@ -246,7 +251,7 @@ export default function ProfilDataScreen() {
       >
         <Image
           source={angleLeftIcon}
-          style={{ height: scale(20), width: scale(20) }}
+          style={{ height: moderateScale(25), width: moderateScale(25) }}
           resizeMode="contain"
         />
       </TouchableOpacity>
@@ -260,7 +265,7 @@ export default function ProfilDataScreen() {
         <View
           style={[
             styles.container_image,
-            { top: image.length !== 0 ? -scale(33) : 0 },
+            { top: image.length !== 0 ? -moderateScale(33) : 0 },
           ]}
         >
           {image.length !== 0 && (
@@ -273,7 +278,7 @@ export default function ProfilDataScreen() {
                 source={trashIcon}
                 tintColor="white"
                 resizeMode="contain"
-                style={{ width: scale(16), height: scale(16) }}
+                style={{ width: moderateScale(16), height: moderateScale(16) }}
               />
             </TouchableOpacity>
           )}
@@ -298,7 +303,7 @@ export default function ProfilDataScreen() {
             <Image
               source={penIcon}
               resizeMode="contain"
-              style={{ width: scale(27), height: scale(27) }}
+              style={{ width: moderateScale(27), height: moderateScale(27) }}
             />
           </TouchableOpacity>
         </View>
@@ -314,89 +319,103 @@ export default function ProfilDataScreen() {
           value={name}
           password={false}
         />
-        <View style={styles.container_input}>
+        <View style={styles.container_picker}>
           <TouchableOpacity
             activeOpacity={1}
             onPress={showDatepicker}
             style={[
               styles.datePicker,
               {
-                borderColor: dobError.length !== 0 ? "red" : "black",
-                borderWidth: dobError.length !== 0 ? scale(2) : scale(1),
+                borderColor: dobError.length !== 0 ? "#B00020" : "black",
+                borderWidth:
+                  dobError.length !== 0 ? moderateScale(2) : moderateScale(1.5),
               },
             ]}
           >
             {initial ? (
-              <Text style={{ color: "gray" }}>{i18next.t("dob")}</Text>
+              <Text style={{ color: "gray", fontSize: moderateScale(14) }}>
+                {i18next.t("dob")}
+              </Text>
             ) : (
-              <Text style={{ color: "black" }}>{dob.toLocaleDateString()}</Text>
+              <Text style={{ color: "black", fontSize: moderateScale(14) }}>
+                {dob.toLocaleDateString()}
+              </Text>
             )}
           </TouchableOpacity>
           <Text
-            style={{ marginTop: scale(4), color: "red", fontSize: scale(11) }}
+            style={{
+              marginTop: moderateScale(4),
+              color: "#B00020",
+              fontSize: moderateScale(11),
+            }}
           >
             {dobError}
           </Text>
-          {show && Platform.OS === "android" && (
-            <View style={{ alignSelf: "center" }}>
-              <DateTimePicker
-                display="spinner"
-                value={dob}
-                onChange={onChangeDate}
-                maximumDate={new Date()}
-              />
-            </View>
-          )}
-          {Platform.OS === "ios" && (
-            <ReactNativeModal
-              isVisible={show}
-              style={{ margin: 0, justifyContent: "flex-end" }}
-              backdropOpacity={0}
-              animationOutTiming={500}
-            >
-              <View style={styles.overlayContent}>
-                <View style={{ alignSelf: "center" }}>
-                  <DateTimePicker
-                    display="spinner"
-                    value={dob}
-                    onChange={onChangeDate}
-                    maximumDate={new Date()}
-                    locale={Localization.getLocales()[0].languageCode!}
-                  />
-                </View>
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.button_ok}
-                  onPress={confirmDate}
-                >
-                  <Text
-                    style={{
-                      fontSize: scale(15),
-                      color: "black",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {i18next.t("ok").toUpperCase()}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </ReactNativeModal>
-          )}
         </View>
+        {show && Platform.OS === "android" && (
+          <View style={{ alignSelf: "center" }}>
+            <DateTimePicker
+              display="spinner"
+              value={dob}
+              onChange={onChangeDate}
+              maximumDate={new Date()}
+            />
+          </View>
+        )}
+        {Platform.OS === "ios" && (
+          <ReactNativeModal
+            isVisible={show}
+            style={{ margin: 0, justifyContent: "flex-end" }}
+            backdropOpacity={0}
+            animationOutTiming={500}
+          >
+            <View style={styles.overlayContent}>
+              <View style={{ alignSelf: "center" }}>
+                <DateTimePicker
+                  display="spinner"
+                  value={dob}
+                  onChange={onChangeDate}
+                  maximumDate={new Date()}
+                  locale={Localization.getLocales()[0].languageCode!}
+                />
+              </View>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={styles.button_ok}
+                onPress={confirmDate}
+              >
+                <Text
+                  style={{
+                    fontSize: moderateScale(15),
+                    color: "black",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {i18next.t("ok").toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ReactNativeModal>
+        )}
         <View
           style={{
-            flex: 0.3,
             justifyContent: "space-evenly",
             alignItems: "center",
             flexDirection: "row",
             alignSelf: "center",
-            paddingTop: scale(15),
+            paddingTop: moderateScale(15),
           }}
         >
-          <Text>{i18next.t("already_account")}</Text>
+          <Text style={{ fontSize: moderateScale(12) }}>
+            {i18next.t("already_account")}
+          </Text>
           <Link
             href="/login"
-            style={{ fontWeight: "bold", marginLeft: scale(10) }}
+            style={{
+              fontWeight: "bold",
+              marginLeft: moderateScale(10),
+              fontSize: moderateScale(12),
+            }}
           >
             {i18next.t("login_title")}
           </Link>
@@ -413,9 +432,9 @@ export default function ProfilDataScreen() {
             <Text
               style={{
                 color: "white",
-                marginEnd: scale(8),
+                marginEnd: moderateScale(8),
                 fontWeight: "bold",
-                fontSize: scale(12),
+                fontSize: moderateScale(12),
               }}
             >
               {i18next.t("next").toUpperCase()}
@@ -424,8 +443,8 @@ export default function ProfilDataScreen() {
               source={angleRightIcon}
               resizeMode="contain"
               style={{
-                height: scale(25),
-                width: scale(25),
+                height: moderateScale(25),
+                width: moderateScale(25),
                 tintColor: "white",
               }}
             />

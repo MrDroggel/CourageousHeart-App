@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { View } from "react-native";
-import { scale } from "react-native-size-matters";
+import { moderateScale } from "react-native-size-matters";
 import { TabTranslKeys } from "@/constants/TabTranslKeys";
 import { TabButton } from "../../components/TabButton";
 import { tabIcons, renderTabIcon } from "../../components/BarIcons";
@@ -20,8 +20,9 @@ export default function TabLayout() {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
+          flexDirection: "row",
           backgroundColor: "#ECDEEA",
-          height: scale(75),
+          height: moderateScale(75),
           alignItems: "center",
         },
         // eslint-disable-next-line react/no-unstable-nested-components

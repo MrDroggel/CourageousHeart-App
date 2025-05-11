@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
-import { ScaledSheet, scale } from "react-native-size-matters";
+import { ScaledSheet, moderateScale } from "react-native-size-matters";
 import i18next from "../../services/i18next";
 
 const signUpImage = require("../../assets/images/sign_up_1.png");
@@ -11,7 +11,7 @@ const styles = ScaledSheet.create({
     flex: 1,
     justifyContent: "space-between",
     backgroundColor: "#fff",
-    paddingVertical: "35@s",
+    paddingVertical: "35@ms",
     width: "100%",
   },
   container_title: {
@@ -20,7 +20,7 @@ const styles = ScaledSheet.create({
     justifyContent: "flex-start",
   },
   container_description: {
-    paddingHorizontal: "20@s",
+    paddingHorizontal: "20@ms",
     alignItems: "center",
     flex: 0.8,
   },
@@ -30,7 +30,7 @@ const styles = ScaledSheet.create({
     flex: 2,
   },
   container_buttons: {
-    paddingHorizontal: "20@s",
+    paddingHorizontal: "20@ms",
     alignItems: "center",
     flex: 1,
     justifyContent: "flex-end",
@@ -38,21 +38,23 @@ const styles = ScaledSheet.create({
   },
   title: {
     color: "#AF8FEA",
-    fontSize: "40@s",
+    fontSize: "45@ms",
     fontWeight: "bold",
   },
   image: {
-    width: "200@s",
-    height: "200@s",
+    width: "200@ms",
+    height: "200@ms",
   },
   button: {
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "50@s",
+    borderRadius: "50@ms",
     backgroundColor: "#C6B1ED",
-    height: "48@s",
+    height: "48@ms",
+    maxHeight: 80,
     width: "100%",
-    marginTop: "25@s",
+    maxWidth: 600,
+    marginTop: "25@ms",
   },
 });
 
@@ -64,7 +66,7 @@ export default function LandingScreen() {
       </View>
 
       <View style={styles.container_description}>
-        <Text style={{ textAlign: "center", fontSize: scale(12) }}>
+        <Text style={{ textAlign: "center", fontSize: moderateScale(14) }}>
           {i18next.t("welcome_text")}
         </Text>
       </View>
@@ -78,7 +80,7 @@ export default function LandingScreen() {
           <TouchableOpacity activeOpacity={0.8} style={styles.button}>
             <Text
               style={{
-                fontSize: scale(15),
+                fontSize: moderateScale(15),
                 color: "white",
                 fontWeight: "bold",
               }}
@@ -91,7 +93,7 @@ export default function LandingScreen() {
           <TouchableOpacity activeOpacity={0.8} style={styles.button}>
             <Text
               style={{
-                fontSize: scale(15),
+                fontSize: moderateScale(15),
                 color: "white",
                 fontWeight: "bold",
               }}

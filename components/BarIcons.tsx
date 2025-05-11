@@ -1,5 +1,5 @@
 import { Image } from "react-native";
-import { scale } from "react-native-size-matters";
+import { moderateScale } from "react-native-size-matters";
 import React from "react";
 
 const home = require("../assets/icons/home.png");
@@ -50,8 +50,8 @@ export function renderTabIcon({ focused, icon }: IconProps) {
       source={focused ? icon.focused : icon.default}
       resizeMode="contain"
       style={{
-        width: scale(27),
-        height: scale(27),
+        width: moderateScale(27),
+        height: moderateScale(27),
         tintColor: "#374957",
       }}
     />
